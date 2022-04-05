@@ -1,0 +1,105 @@
+// default dark
+:root {
+  --body-background: #44444d;
+  --header-background: #1c1c1f;
+  --card-background: #1c1c1f;
+  --item-background: #1c1c1f;
+  --item-background-secondary: #36363b;
+
+  --card-background-hover: #323238;
+  --item-background-hover: #323238;
+  --item-background-hover-secondary: #4b4b52;
+
+  --card-inside-borders: #a8a8b3;
+  --inside-borders: #64646b;
+  --borders-lite: #606066bd;
+
+
+  --logo-color-1: rgb(255, 255, 255);
+  --logo-color-2: #ffcc33;
+
+  --font-color: #eee;
+  --font-color-secondary: rgb(187, 187, 187);
+
+
+  --link-color: lightblue;
+
+  --button-disabled-background: #bdbdd8;
+
+
+  --gray-50: #e1e1e6;
+  --gray-300: #a8a8b3;
+  --gray-700: #323238;
+  --gray-800: #29292e;
+  --gray-850: #1f2729;
+  --gray-900: #121214;
+}
+
+[data-theme="light"] {
+  --body-background: rgb(233, 232, 235);
+  --header-background: #ffffff;
+  --card-background: #ffffff;
+  --item-background: #ffffff;
+  --item-background-secondary: #e2e2e2;
+
+
+  --borders-lite: #58585e25;
+
+  --card-background-hover: #fff;
+  --item-background-hover: #fff;
+  --item-background-hover-secondary: #c2c2c2;
+
+
+  --button-disabled-background: #1c1c1f;
+
+
+  --logo-color-1: rgb(34, 34, 34);
+
+
+  --font-color: rgb(43, 43, 43);
+  --font-color-secondary: rgb(102, 102, 102);
+
+
+  --link-color: cornflowerblue;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  transition: background-color 0.2s, color 0.1s;
+
+  &::-webkit-scrollbar {
+    width: 2px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--font-color);
+    border-radius: 30px;
+  }
+}
+
+p,
+h1,
+h2,
+h3 {
+  color: var(--font-color);
+}
+
+html,
+body {
+  overflow: hidden;
+  height: 100vh;
+  background-color: var(--body-background);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  color: var(--link-color);
+}

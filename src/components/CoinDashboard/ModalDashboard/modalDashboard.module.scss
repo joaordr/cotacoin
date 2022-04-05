@@ -1,0 +1,22 @@
+.ReactModal__Overlay {
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.ReactModal__Content {
+    z-index: 6;
+    display: flex;
+    position: absolute;
+    top: 51px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--card-background);
+
+    overflow: auto;
+}

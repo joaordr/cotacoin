@@ -1,0 +1,29 @@
+.container {
+    max-width: 600px;
+    width: 100%;
+    height: calc(100vh - 76px);
+    background: var(--card-background);
+    border-radius: 4px;
+    overflow: auto;
+    overflow-x: hidden;
+
+    h1 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        height: 100%;
+
+        color: var(--font-color);
+
+        text-align: center;
+        font-size: 14pt;
+        font-weight: 300;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .container {
+        display: none;
+    }
+}

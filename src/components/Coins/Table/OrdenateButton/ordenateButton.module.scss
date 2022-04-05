@@ -1,0 +1,25 @@
+.container {
+    transition: background-color 0.3s;
+
+    &:hover {
+        cursor: pointer;
+        background: var(--item-background-hover);
+    }
+
+    div {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: space-between;
+
+        span {
+            display: flex;
+        }
+
+        p {
+            width: 100%;
+            // padding-left: 13px;
+            user-select: none;
+        }
+    }
+}

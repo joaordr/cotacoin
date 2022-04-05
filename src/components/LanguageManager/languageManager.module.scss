@@ -1,0 +1,24 @@
+.container {
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+
+    button {
+        display: flex;
+        font-size: 18pt;
+        color: var(--font-color);
+        background: var(--item-background-secondary);
+        border: 1px solid var(--borders-lite);
+        border-radius: 15px;
+        padding: 3px;
+
+        svg {
+            color: var(--font-color);
+        }
+
+        &:hover {
+            cursor: pointer;
+            background: var(--item-background-hover-secondary);
+        }
+    }
+}

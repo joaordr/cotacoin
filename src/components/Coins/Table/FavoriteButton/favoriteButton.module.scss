@@ -1,0 +1,16 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    path {
+        transition: all 0.2s;
+        stroke: var(--font-color);
+    }
+}

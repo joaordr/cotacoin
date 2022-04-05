@@ -1,0 +1,48 @@
+.container {
+    position: sticky;
+    top: 0;
+
+    z-index: 5;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    padding: 10px 30px;
+
+    background-color: var(--header-background);
+    // box-shadow: rgb(61, 61, 61) 0px 1px 300px 1px;
+
+    h1 {
+        display: flex;
+        align-items: center;
+
+        font-size: 20pt;
+        user-select: none;
+        color: var(--logo-color-1);
+        ;
+        font-weight: 300;
+
+        strong {
+            display: flex;
+            align-items: center;
+            font-size: 25pt;
+            color: var(--logo-color-2);
+            font-weight: 600;
+
+            svg {
+                font-size: 21pt;
+            }
+        }
+    }
+
+    .menu_container {
+        display: flex;
+    }
+}
+
+
+@media screen and (max-width: 1024px) {
+    .container {
+        padding: 5px 10px;
+    }
+}
