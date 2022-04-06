@@ -15,7 +15,7 @@ let valueChange24HrPercentage = '';
 
 export default function TableRow({ coin }) {
     const { locale } = useRouter();
-    const { setSelectedCoin } = useContext(CoinsContext);
+    const { selectedCoin, setSelectedCoin } = useContext(CoinsContext);
 
     if (coin.price_change_24h != null) {
         if (locale == 'pt') {
@@ -28,7 +28,7 @@ export default function TableRow({ coin }) {
     }
 
     return (
-        <tr className={styles.container} >
+        <tr className={`${styles.container} ${(selectedCoin != null && selectedCoin.id == coin.id) && styles.active}`} >
             <td>
                 <FavoriteButton />
             </td>

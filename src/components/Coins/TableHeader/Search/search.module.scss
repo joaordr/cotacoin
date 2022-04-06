@@ -1,7 +1,6 @@
 .container {
     display: flex;
     align-items: center;
-    justify-content: center;
 
     max-width: 300px;
     width: 100%;
@@ -10,7 +9,7 @@
     .content {
         display: flex;
         align-items: center;
-        // max-width: 370px;
+        max-width: 270px;
         width: 100%;
         background: var(--item-background);
 
@@ -56,6 +55,7 @@
         padding: 0 5px;
 
         .content {
+            max-width: 100%;
             margin: 0;
         }
     }

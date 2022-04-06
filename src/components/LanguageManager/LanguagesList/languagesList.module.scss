@@ -29,6 +29,14 @@
 
         color: var(--font-color);
 
+        .active {
+            background: var(--item-background-secondary-active);
+
+            &:hover {
+                background: var(--item-background-secondary-active);
+            }
+        }
+
         div {
             display: flex;
             align-items: center;

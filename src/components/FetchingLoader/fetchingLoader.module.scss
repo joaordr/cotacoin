@@ -12,15 +12,15 @@
     border-radius: 50%;
     border: 3px solid var(--font-color);
     border-color: var(--font-color) transparent var(--font-color) transparent;
-    animation: lds_dual_ring 1.2s linear infinite;
+    animation: spin 1.2s linear infinite;
 }
 
-@keyframes lds_dual_ring {
+@keyframes spin {
     0% {
-        transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
     }
 
     100% {
-        transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
     }
 }

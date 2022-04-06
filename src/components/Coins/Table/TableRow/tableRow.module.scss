@@ -8,7 +8,6 @@
 
 .container {
     background: none;
-
     transition: background-color 0.3s;
 
     p {
@@ -99,7 +98,7 @@
         }
 
         .negative_value {
-            color: red;
+            color: #ff0000;
         }
 
         .positive_value {
@@ -135,14 +134,19 @@
             cursor: pointer;
             background: #c0cdd8;
         }
+    }
+}
 
+.active {
+    background: var(--item-background);
 
+    &:hover {
+        background: var(--item-background);
     }
 }
 
 @media screen and (max-width: 720px) {
     .container {
-
         td:nth-child(3) {
             .identification_container {
 
