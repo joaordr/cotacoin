@@ -6,6 +6,8 @@ import TableRow from './TableRow';
 
 import styles from './table.module.scss';
 import { CoinsContext } from '../../../contexts/CoinsContext';
+import { LanguageContext } from "../../../contexts/LanguageContext";
+
 import FavoriteButton from './FavoriteButton';
 import OrdenateButton from './OrdenateButton';
 
@@ -17,6 +19,7 @@ let isOrderByVolumeCrescent = true;
 let ordenedBy = '';
 
 export default function Table() {
+    const { translations } = useContext(LanguageContext);
     const { coins, isFetchingCoins } = useContext(CoinsContext);
     const [coinsControl, setCoinsControl] = useState(coins);
 
@@ -113,10 +116,10 @@ export default function Table() {
                             <FavoriteButton />
                         </th>
                         <OrdenateButton name={''} onClickAction={OrdenateByNumber} />
-                        <OrdenateButton name={'Moeda'} onClickAction={OrdenateByName} />
-                        <OrdenateButton name={'Preço'} onClickAction={OrdenateByPrice} />
-                        <OrdenateButton name={'Volume'} onClickAction={OrdenateByVolume} />
-                        <th scope="col">{"Capitalização"}</th>
+                        <OrdenateButton name={translations.tableHeader.coin} onClickAction={OrdenateByName} />
+                        <OrdenateButton name={translations.tableHeader.price} onClickAction={OrdenateByPrice} />
+                        <OrdenateButton name={translations.tableHeader.volume} onClickAction={OrdenateByVolume} />
+                        <th scope="col">{translations.tableHeader.marketCap}</th>
                     </tr>
                 </thead>
                 <tbody>

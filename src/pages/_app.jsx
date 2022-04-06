@@ -6,24 +6,26 @@ import { ReactQueryDevtools } from 'react-query/devtools'
 
 import '../styles/globals.scss';
 import { ThemeProvider } from '../contexts/ThemeContext';
+import { LanguageProvider } from '../contexts/LanguageContext';
+
 import Header from '../components/Header';
 
 const MyApp = ({ Component, pageProps }) => {
   return (
-    <ThemeProvider>
-      <QueryClientProvider client={queryClient}>
-        <CoinsProvider>
-          <Header />
-          < Component {...pageProps} />
-        </CoinsProvider>
+    <LanguageProvider>
+      <ThemeProvider>
+        <QueryClientProvider client={queryClient}>
+          <CoinsProvider>
+            <Header />
+            < Component {...pageProps} />
+          </CoinsProvider>
 
-        {/* <ReactQueryDevtools initialIsOpen={false} /> */}
+          {/* <ReactQueryDevtools initialIsOpen={false} /> */}
 
-      </QueryClientProvider>
-    </ThemeProvider>
-
+        </QueryClientProvider>
+      </ThemeProvider>
+    </LanguageProvider>
   )
-
 }
 
 export default MyApp;

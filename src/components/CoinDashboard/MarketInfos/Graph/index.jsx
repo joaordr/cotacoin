@@ -3,11 +3,11 @@
 import dynamic from 'next/dynamic';
 import { useContext, useEffect, useState } from 'react';
 import { ThemeContext } from '../../../../contexts/ThemeContext';
-import { useRouter } from 'next/router';
 
 import Loader from "../../../Loader";
 
 import styles from './graph.module.scss';
+import { LanguageContext } from '../../../../contexts/LanguageContext';
 
 const Chart = dynamic(() => import('react-apexcharts'), {
     ssr: false
@@ -16,8 +16,10 @@ const Chart = dynamic(() => import('react-apexcharts'), {
 const valueFormatBRL = new Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' });
 const valueFormatUSD = new Intl.NumberFormat('en-us', { style: 'currency', currency: 'USD' });
 
-function convertDate(timestamp, locale) {
-    return new Date(timestamp).toLocaleTimeString(locale == 'pt' ? 'pt-BR' : 'en-US', {
+let lang = '';
+
+function convertDate(timestamp) {
+    return new Date(timestamp).toLocaleTimeString(lang == 'pt' ? 'pt-BR' : 'en-US', {
         day: '2-digit',
         month: '2-digit',
         hour: '2-digit',
@@ -25,9 +27,11 @@ function convertDate(timestamp, locale) {
     });
 }
 
-export default function Graph({ data, isFetching, description, isUpping }) {
-    const { locale } = useRouter();
+export default function Graph({ data, isFetching, description }) {
+    const { translations, locale } = useContext(LanguageContext);
     const { darkMode } = useContext(ThemeContext);
+
+    lang = locale;
 
     let options = {
         chart: {
@@ -47,7 +51,7 @@ export default function Graph({ data, isFetching, description, isUpping }) {
             x: {
                 show: true,
                 formatter: function (value) {
-                    return convertDate(value, locale);
+                    return convertDate(value);
                 }
             },
         },
@@ -134,7 +138,7 @@ export default function Graph({ data, isFetching, description, isUpping }) {
                     colors: [color]
                 }
             })
-            setChartData([{ name: 'Valor', data: data }]);
+            setChartData([{ name: translations.common.value, data: data }]);
         }
     }, [data])
 

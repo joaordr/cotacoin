@@ -8,9 +8,10 @@ import FetchingLoader from '../../FetchingLoader';
 import Graph from './Graph';
 
 import styles from './marketInfos.module.scss';
+import { LanguageContext } from '../../../contexts/LanguageContext';
 
 export default function MarketInfos({ coin }) {
-    const { locale } = useRouter();
+    const { translations, locale } = useContext(LanguageContext);
 
     const { setSelectedCoin } = useContext(CoinsContext);
     const { data, isFetching } = useMarketChart(coin.id, 1, locale == 'pt' ? 'brl' : 'usd');
@@ -26,9 +27,9 @@ export default function MarketInfos({ coin }) {
                 <button className={styles.close} onClick={() => setSelectedCoin(null)}><AiOutlineClose /></button>
 
             </div>
-            <Graph data={data.prices} isFetching={isFetching} description={'Preço'} />
-            <Graph data={data.total_volumes} isFetching={isFetching} description={'Volume'} />
-            <Graph data={data.market_caps} isFetching={isFetching} description={'Capitalização'} />
+            <Graph data={data.prices} isFetching={isFetching} description={translations.tableHeader.price} />
+            <Graph data={data.total_volumes} isFetching={isFetching} description={translations.tableHeader.volume} />
+            <Graph data={data.market_caps} isFetching={isFetching} description={translations.tableHeader.marketCap} />
         </div>
     )
 }

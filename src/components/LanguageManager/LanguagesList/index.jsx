@@ -1,10 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import Image from 'next/image';
 
 import styles from './languagesList.module.scss';
+import { LanguageContext } from "../../../contexts/LanguageContext";
 
 export default function LanguagesList({ isOpen, setIsOpen }) {
+    const { translations, changeLanguage } = useContext(LanguageContext);
     const componentRef = useRef();
 
     useEffect(() => { // Detecta clicks externos e fecha o menu
@@ -30,13 +32,13 @@ export default function LanguagesList({ isOpen, setIsOpen }) {
         <div className={`${styles.container} ${isOpen ? styles.open : ""}`} ref={componentRef}>
             <div className={styles.arrow_up}></div>
             <div className={styles.content}>
-                <div onClick={() => { }}>
+                <div onClick={() => changeLanguage('pt')}>
                     <Image src='/images/flags/br.png' alt='' width={30} height={30} />
-                    <p>p</p>
+                    <p>{translations.languages.portuguese}</p>
                 </div>
-                <div onClick={() => { }}>
+                <div onClick={() => changeLanguage('en')}>
                     <Image src='/images/flags/us.png' alt='' width={30} height={30} />
-                    <p>en</p>
+                    <p>{translations.languages.english}</p>
                 </div>
             </div>
         </div>
