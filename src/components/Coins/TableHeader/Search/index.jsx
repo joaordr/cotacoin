@@ -18,9 +18,9 @@ export default function Search() {
     const { translations } = useContext(LanguageContext);
     const { width } = useWindowDimensions();
 
-    const { itemsPerPage, setPages, setFilter, isFetchingCoins } = useContext(CoinsContext);
+    const { itemsPerPage, setPages, setFilter, isFetchingCoins, coins } = useContext(CoinsContext);
     const [searchValue, setSearchValue] = useState('');
-    const { data, isFetching, isLoading } = useSearch(searchValue, itemsPerPage);
+    const { data, isFetching } = useSearch(searchValue, itemsPerPage);
 
     useEffect(() => {
         if (searchValue.length == 0) {
@@ -62,7 +62,7 @@ export default function Search() {
                 <input id="searchField" type="text" placeholder={translations.common.searchPlaceholder} onKeyUp={e => handleSearch(e.target.value.trim())} />
                 {isFetching ? <FetchingLoader /> : <>{(searchValue.length > 0) && <AiOutlineClose onClick={() => { setSearchValue('') }} />}</>}
             </div>
-            {(isFetchingCoins && width > 850) && <FetchingLoader />}
+            {(isFetchingCoins && coins.length != 0 && width > 850) && <FetchingLoader />}
         </div>
     )
 }
