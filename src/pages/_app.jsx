@@ -1,6 +1,7 @@
 import { QueryClientProvider } from 'react-query'
 import { CoinsProvider } from '../contexts/CoinsContext';
 import { queryClient } from '../services/queryClient'
+import { SessionProvider } from "next-auth/react"
 
 import { ReactQueryDevtools } from 'react-query/devtools'
 
@@ -10,22 +11,24 @@ import { LanguageProvider } from '../contexts/LanguageContext';
 
 import Header from '../components/Header';
 
-const MyApp = ({ Component, pageProps }) => {
+function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
     <LanguageProvider>
       <ThemeProvider>
-        <QueryClientProvider client={queryClient}>
-          <CoinsProvider>
-            <Header />
-            < Component {...pageProps} />
-          </CoinsProvider>
+        <SessionProvider session={session}>
+          <QueryClientProvider client={queryClient}>
+            <CoinsProvider>
+              <Header />
+              < Component {...pageProps} />
+            </CoinsProvider>
 
-          {/* <ReactQueryDevtools initialIsOpen={false} /> */}
+            {/* <ReactQueryDevtools initialIsOpen={false} /> */}
 
-        </QueryClientProvider>
+          </QueryClientProvider>
+        </SessionProvider>
       </ThemeProvider>
     </LanguageProvider>
   )
 }
 
-export default MyApp;
+export default MyApp
