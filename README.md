@@ -95,6 +95,6 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 ## 📝 Licença
 
-Este projeto esta sobe a licença [MIT](./LICENSE.md).
+Este projeto esta sobe a licença [MIT](./LICENSE).
 
 Feito com ❤️ por João Rodrigo Prieto 👋🏽 [Entre em contato!](https://www.linkedin.com/in/joao-rodrigo-prieto/)
