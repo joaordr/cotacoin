@@ -4,12 +4,15 @@
   --header-background: #1c1c1f;
   --card-background: #1c1c1f;
   --item-background: #1c1c1f;
-  --item-background-secondary: #3e3e46;
+  --item-background-secondary: #282830;
   --item-background-secondary-active: rgb(43, 44, 49);
+  --item-background-tertiary: #515161;
 
   --card-background-hover: #323238;
   --item-background-hover: #323238;
-  --item-background-hover-secondary: #4b4b52;
+  --item-background-hover-secondary: #3d3d42;
+  --item-background-hover-tertiary: #66667a;
+
 
   --card-inside-borders: #a8a8b3;
   --inside-borders: #64646b;
@@ -37,18 +40,21 @@
 }
 
 [data-theme="light"] {
-  --body-background: rgb(233, 232, 235);
+  --body-background: rgb(247, 247, 247);
   --header-background: #ffffff;
   --card-background: #ffffff;
   --item-background: #ffffff;
-  --item-background-secondary: #e2e2e2;
+  --item-background-secondary: #e6e6e6;
+  --item-background-tertiary: #ffffff;
 
 
   --borders-lite: #58585e25;
 
   --card-background-hover: #fff;
   --item-background-hover: #fff;
-  --item-background-hover-secondary: #c2c2c2;
+  --item-background-hover-secondary: #d9d9df;
+  --item-background-hover-tertiary: #b3b3c7;
+
 
 
   --button-disabled-background: #1c1c1f;
