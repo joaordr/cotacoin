@@ -33,6 +33,16 @@
                     }
                 }
 
+                th:nth-child(1) {
+                    width: 35px;
+                }
+
+                th:nth-child(2) {
+                    div {
+                        justify-content: center;
+                    }
+                }
+
                 th:nth-child(6) {
                     user-select: none;
                 }

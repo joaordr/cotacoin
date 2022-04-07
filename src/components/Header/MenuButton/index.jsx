@@ -1,5 +1,4 @@
-import { RiSettings3Line } from "react-icons/ri";
-import { MdOutlineKeyboardArrowDown } from "react-icons/md";
+import { CgMenu } from "react-icons/cg";
 
 import styles from './menuButton.module.scss';
 import { useState } from "react";
@@ -11,7 +10,7 @@ export default function MenuButton() {
     return (
         <>
             <div className={styles.container}>
-                <button onClick={() => setMenuOpen(!isMenuOpen)}><MdOutlineKeyboardArrowDown /><RiSettings3Line /> </button>
+                <button onClick={() => setMenuOpen(!isMenuOpen)}><CgMenu /> </button>
             </div>
             <Menu isOpen={isMenuOpen} setIsOpen={setMenuOpen} />
         </>
