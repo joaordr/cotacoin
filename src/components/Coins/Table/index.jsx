@@ -1,15 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useContext, useEffect, useState } from 'react';
 
-import Loader from '../../Loader';
-import TableRow from './TableRow';
-
-import styles from './table.module.scss';
 import { CoinsContext } from '../../../contexts/CoinsContext';
 import { LanguageContext } from "../../../contexts/LanguageContext";
 
+import Loader from '../../Loader';
+import TableRow from './TableRow';
 import FavoriteButton from './FavoriteButton';
 import OrdenateButton from './OrdenateButton';
+
+import styles from './table.module.scss';
 
 let isOrderByNumberCrescent = true;
 let isOrderByNameCrescent = true;
