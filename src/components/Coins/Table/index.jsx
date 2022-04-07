@@ -18,10 +18,22 @@ let isOrderByVolumeCrescent = true;
 
 let ordenedBy = '';
 
+let isFavoriteFiltered = false;
+
 export default function Table() {
     const { translations } = useContext(LanguageContext);
-    const { coins, isFetchingCoins } = useContext(CoinsContext);
+    const { coins, isFetchingCoins, favoriteCoins, setFilter, setPages, itemsPerPage } = useContext(CoinsContext);
     const [coinsControl, setCoinsControl] = useState(coins);
+
+    useEffect(() => {
+        if (isFavoriteFiltered) {
+            if (favoriteCoins.length == 0) {
+                setFilter('false');
+            } else {
+                makeFilterString();
+            }
+        }
+    }, [favoriteCoins])
 
     useEffect(() => {
         switch (ordenedBy) {
@@ -106,6 +118,32 @@ export default function Table() {
         setCoinsControl(ordenedArray);
     }
 
+    function handleFilterFavorites(checked) {
+        if (checked) {
+            if (favoriteCoins.length == 0) {
+                setFilter('false');
+                setPages(1);
+            } else {
+                makeFilterString();
+            }
+        } else {
+            setFilter('');
+        }
+        isFavoriteFiltered = checked;
+    }
+
+    function makeFilterString() {
+        let filterString = '';
+        favoriteCoins.forEach(coin => {
+            filterString += `,${coin}`
+        });
+        const filter = filterString.slice(1);
+        const pages = (favoriteCoins.length > 0 && favoriteCoins.length < 100) ? 1 : Math.round(favoriteCoins.length / itemsPerPage);
+
+        setPages(pages);
+        setFilter(filter);
+    }
+
     return (
         <div id="table_container" className={styles.container}>
             {(isFetchingCoins && coins.length == 0) && <Loader />}
@@ -113,7 +151,7 @@ export default function Table() {
                 <thead>
                     <tr>
                         <th>
-                            <FavoriteButton />
+                            <FavoriteButton onClickFunction={handleFilterFavorites} isFavorite={isFavoriteFiltered} />
                         </th>
                         <OrdenateButton name={''} onClickAction={OrdenateByNumber} />
                         <OrdenateButton name={translations.tableHeader.coin} onClickAction={OrdenateByName} />
@@ -123,11 +161,9 @@ export default function Table() {
                     </tr>
                 </thead>
                 <tbody>
-
-                    {coinsControl.map((coin, index) => {
-                        return <TableRow key={index} coin={coin} />
+                    {coinsControl.map((coin) => {
+                        return <TableRow key={coin.id} coin={coin} />
                     })}
-
                 </tbody>
             </table>
         </div>

@@ -5,9 +5,9 @@ import { ThemeContext } from "../../../../contexts/ThemeContext";
 
 import styles from './favoriteButton.module.scss';
 
-export default function FavoriteButton() {
+export default function FavoriteButton({ onClickFunction, isFavorite = false }) {
     const { colors } = useContext(ThemeContext);
-    const [checked, setChecked] = useState(false);
+    const [checked, setChecked] = useState(isFavorite);
 
     return (
         <div className={styles.container}>
@@ -17,6 +17,7 @@ export default function FavoriteButton() {
                 reverse={checked}
                 onClick={() => {
                     setChecked(!checked);
+                    onClickFunction(!checked);
                 }}
             />
         </div>

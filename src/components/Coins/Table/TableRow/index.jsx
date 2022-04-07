@@ -13,9 +13,11 @@ const valueFormatUSD = new Intl.NumberFormat('en-us', { style: 'currency', curre
 let valueChange24Hr = '';
 let valueChange24HrPercentage = '';
 
+let isFavorite = false;
+
 export default function TableRow({ coin }) {
     const { locale } = useRouter();
-    const { selectedCoin, setSelectedCoin } = useContext(CoinsContext);
+    const { selectedCoin, setSelectedCoin, favoriteCoins, setFavoriteCoins } = useContext(CoinsContext);
 
     if (coin.price_change_24h != null) {
         if (locale == 'pt') {
@@ -24,13 +26,27 @@ export default function TableRow({ coin }) {
             valueChange24Hr = valueFormatUSD.format(coin.price_change_24h).replace('$', '');
         }
         valueChange24HrPercentage = Number(coin.price_change_percentage_24h.toFixed(2)).toLocaleString({ style: 'percent' });
+    }
 
+    isFavorite = favoriteCoins.includes(coin.id);
+
+    function handleSetFavorite(checked) {
+        if (checked && !isFavorite) {
+            setFavoriteCoins([...favoriteCoins, coin.id]);
+        } else {
+            let newArray = [...favoriteCoins];
+            setFavoriteCoins(
+                newArray.filter((item) => {
+                    return item != coin.id;
+                })
+            )
+        }
     }
 
     return (
         <tr className={`${styles.container} ${(selectedCoin != null && selectedCoin.id == coin.id) && styles.active}`} >
             <td>
-                <FavoriteButton />
+                <FavoriteButton onClickFunction={handleSetFavorite} isFavorite={isFavorite} />
             </td>
 
             <td onClick={() => setSelectedCoin(coin)}>

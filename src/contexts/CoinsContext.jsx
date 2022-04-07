@@ -26,6 +26,7 @@ export function CoinsProvider({ children }) {
     const [pages, setPages] = useState(0);
     const [activePage, setActivePage] = useState(1);
     const [filter, setFilter] = useState('');
+    const [favoriteCoins, setFavoriteCoins] = useState([]);
 
     const [selectedCoin, setSelectedCoin] = useState(null);
 
@@ -49,7 +50,7 @@ export function CoinsProvider({ children }) {
     }, [pages])
 
     return (
-        <CoinsContext.Provider value={{ coins, isLoadingCoins, isFetchingCoins, removeCoins, pages, setPages, activePage, setActivePage, setFilter, itemsPerPage, selectedCoin, setSelectedCoin }}>
+        <CoinsContext.Provider value={{ coins, isLoadingCoins, isFetchingCoins, removeCoins, pages, setPages, activePage, setActivePage, setFilter, itemsPerPage, selectedCoin, setSelectedCoin, favoriteCoins, setFavoriteCoins }}>
             {children}
         </CoinsContext.Provider>
     )
