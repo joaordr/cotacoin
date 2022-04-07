@@ -3,7 +3,8 @@ export const tranlations = {
         value: "Valor",
         searchPlaceholder: "Pesquisar",
         darkMode: "Modo escuro",
-        signIn: "Fazer Login"
+        signIn: "Fazer Login",
+        signOut: "Sair"
     },
     languages: {
         language: "Idioma",

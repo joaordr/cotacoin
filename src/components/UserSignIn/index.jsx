@@ -11,11 +11,6 @@ export default function UserSignIn() {
     const [isSignInMenuOpen, setIsSignInMenuOpen] = useState(false);
     const { data: session, status } = useSession();
 
-    if (status === "authenticated") {
-        console.log(session.user.image);
-
-    }
-
     return (
         <>
             <div className={styles.container}>

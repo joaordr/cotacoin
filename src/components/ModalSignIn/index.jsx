@@ -7,7 +7,7 @@ import { FcGoogle } from 'react-icons/fc';
 import styles from './modalSignIn.module.scss';
 
 export default function ModalSignIn({ isOpen, setIsOpen }) {
-    const { data: session, status } = useSession();
+    const { status } = useSession();
 
     return (
         <ReactModal
