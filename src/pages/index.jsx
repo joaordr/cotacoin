@@ -11,10 +11,10 @@ export default function coins() {
         <title>CotaCoin</title>
       </Head>
 
-      <div className={styles.content}>
+      {/* <div className={styles.content}>
         <Coins />
         <CoinDashboard />
-      </div>
+      </div> */}
 
     </div>
   )

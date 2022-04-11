@@ -3,6 +3,9 @@ import { CoinsProvider } from '../contexts/CoinsContext';
 import { queryClient } from '../services/queryClient'
 import { SessionProvider } from "next-auth/react"
 
+import { GlobalStyles } from "../styles/global";
+
+
 import { ReactQueryDevtools } from 'react-query/devtools'
 
 import '../styles/globals.scss';
@@ -20,6 +23,8 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
             <CoinsProvider>
               <Header />
               < Component {...pageProps} />
+
+              <GlobalStyles />
             </CoinsProvider>
 
             {/* <ReactQueryDevtools initialIsOpen={false} /> */}

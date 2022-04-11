@@ -1,3 +1,6 @@
+import { createGlobalStyle } from "styled-components";
+
+export const GlobalStyles = createGlobalStyle`
 // default dark
 :root {
   --body-background: #44444d;
@@ -22,8 +25,9 @@
   --logo-color-1: rgb(255, 255, 255);
   --logo-color-2: #ffcc33;
 
-  --font-color: #eee;
+  --font-color: #fff;
   --font-color-secondary: rgb(187, 187, 187);
+  --font-hover: #e1e1e6;
 
 
   --link-color: lightblue;
@@ -55,7 +59,7 @@
   --item-background-hover-secondary: #d9d9df;
   --item-background-hover-tertiary: #b3b3c7;
 
-
+  --font-hover: rgb(43, 43, 43);
 
   --button-disabled-background: #1c1c1f;
 
@@ -110,3 +114,4 @@ a {
   text-decoration: none;
   color: var(--link-color);
 }
+`
