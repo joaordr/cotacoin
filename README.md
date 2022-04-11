@@ -1,10 +1,10 @@
 <p align="center">
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/joaordr/patients-list?color=%2304D361">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/joaordr/cotacoin?color=%2304D361">
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/joaordr/patients-list">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/joaordr/cotacoin">
   
-  <a href="https://github.com/joaordr/patients-list/commits/master">
-    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/joaordr/patients-list">
+  <a href="https://github.com/joaordr/cotacoin/commits/master">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/joaordr/cotacoin">
   </a>
     
    <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen">
