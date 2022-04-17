@@ -11,29 +11,11 @@ export default function coins() {
         <title>CotaCoin</title>
       </Head>
 
-      {/* <div className={styles.content}>
+      <div className={styles.content}>
         <Coins />
         <CoinDashboard />
-      </div> */}
+      </div>
 
     </div>
   )
 }
-
-
-// /* eslint-disable react-hooks/exhaustive-deps */
-// import { useEffect } from 'react';
-// import { useRouter } from 'next/router'
-// import Head from 'next/head';
-
-// export default function Home() {
-//   const router = useRouter();
-//   useEffect(() => {
-//     router.push('/pt');
-//   }, [])
-//   return (
-//     <Head>
-//       <title>CotaCoin</title>
-//     </Head>
-//   )
-// }

@@ -1,29 +1,17 @@
-/* eslint-disable @next/next/no-img-element */
-/* eslint-disable react-hooks/exhaustive-deps */
-import { useContext, useEffect, useRef, useState } from 'react';
-import { BsFillMoonFill } from 'react-icons/bs';
-import { MdLanguage } from 'react-icons/md';
+import { useContext, useState } from 'react';
 import { signOut, useSession } from 'next-auth/react';
+import { MenuItem, Button, Divider, FormControlLabel, Stack, Avatar } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import Avatar from '@mui/material/Avatar';
-import Stack from '@mui/material/Stack';
-import { styled } from '@mui/material/styles';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import LanguageIcon from '@mui/icons-material/Language';
 
-import { IconButton, MenuItem, Button, Divider } from '@mui/material';
-import Switch from '@mui/material/Switch';
-import FormControlLabel from '@mui/material/FormControlLabel';
 import { ThemeContext } from "../../../contexts/ThemeContext";
-
-
-// import styles from './menu.module.scss';
-import LanguageManager from '../../LanguageManager';
-import ModalSignIn from '../../ModalSignIn';
 import { LanguageContext } from '../../../contexts/LanguageContext';
 
+import LanguageManager from './LanguageManager';
+import ModalSignIn from '../../ModalSignIn';
+
 import { SettingsMenu, MenuButton, LoginButton, ThemeSwitcher } from './styles';
-
-
-
 
 export default function Menu() {
     const { darkMode, setDarkMode } = useContext(ThemeContext);
@@ -32,9 +20,6 @@ export default function Menu() {
     const { data: session, status } = useSession();
 
     const [isOpen, setIsOpen] = useState(false);
-    function handleClick(event) {
-        setIsOpen(event.currentTarget);
-    };
 
     return (
         <>
@@ -43,13 +28,13 @@ export default function Menu() {
                 edge="start"
                 color="inherit"
                 aria-label="menu"
-                size="large"
+                size="small"
                 aria-controls={isOpen ? 'settings-menu' : undefined}
                 aria-haspopup="true"
                 aria-expanded={isOpen ? 'true' : undefined}
-                onClick={handleClick}
+                onClick={(event) => setIsOpen(event.currentTarget)}
             >
-                <MenuIcon fontSize="inherit" />
+                <MenuIcon fontSize="large" />
             </MenuButton>
 
             <SettingsMenu
@@ -70,7 +55,7 @@ export default function Menu() {
                 }}
             >
                 {(status === "authenticated") ? (
-                    <Stack direction="row" spacing={2} sx={{ px: 1 }}>
+                    <Stack direction="row" spacing={2} sx={{ p: 1 }}>
                         <Avatar
                             alt="User image"
                             src={session.user.image}
@@ -78,7 +63,13 @@ export default function Menu() {
                         />
                         <Stack direction="column" spacing={1} justifyContent="center">
                             <p>{session.user.name}</p>
-                            <a href="" onClick={(e) => { e.preventDefault(); signOut(); }}>{translations.common.signOut}</a>
+                            <Button
+                                size="small"
+                                onClick={signOut}
+                                color="error"
+                            >
+                                {translations.common.signOut}
+                            </Button>
                         </Stack>
                     </Stack>
                 ) : (
@@ -87,24 +78,24 @@ export default function Menu() {
                     </Stack>
                 )}
                 <Divider variant="middle" sx={{ bgcolor: 'var(--borders-lite)' }} />
-
-
                 <MenuItem onClick={() => { setDarkMode(!darkMode) }}>
                     <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ width: 1 }}>
-                        <p><BsFillMoonFill /> {translations.common.darkMode}</p>
+                        <Stack direction="row" alignItems="center" spacing={1}>
+                            <DarkModeIcon /> <p>{translations.common.darkMode}</p>
+                        </Stack>
                         <FormControlLabel sx={{ m: 0 }} control={<ThemeSwitcher checked={darkMode} />} />
                     </Stack>
                 </MenuItem>
-
                 <MenuItem>
-                    <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ py: 1, width: 1 }}>
-                        <p><MdLanguage /> {translations.languages.language}</p>
+                    <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ width: 1 }}>
+                        <Stack direction="row" alignItems="center" spacing={1}>
+                            <LanguageIcon /><p>{translations.languages.language}</p>
+                        </Stack>
                         <LanguageManager />
                     </Stack>
                 </MenuItem>
-
-
             </SettingsMenu>
+            <ModalSignIn isOpen={isModalSignInOpen} setIsOpen={setIsModalSignInOpen} />
         </>
 
     )

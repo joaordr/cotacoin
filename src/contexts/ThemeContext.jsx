@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useMemo, useState } from "react";
+import { createTheme, ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
 
 export const ThemeContext = createContext({});
 
@@ -16,6 +17,16 @@ export function ThemeProvider({ children }) {
 
         }
     }, [])
+
+    const theme = useMemo(
+        () =>
+            createTheme({
+                palette: {
+                    mode: darkMode ? 'dark' : 'light',
+                },
+            }),
+        [darkMode],
+    );
 
     useEffect(() => {
         if (darkMode != undefined) {
@@ -34,7 +45,9 @@ export function ThemeProvider({ children }) {
 
     return (
         <ThemeContext.Provider value={{ darkMode, setDarkMode, colors }}>
-            {children}
+            <MuiThemeProvider theme={theme}>
+                {children}
+            </MuiThemeProvider>
         </ThemeContext.Provider>
     )
 

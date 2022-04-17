@@ -9,9 +9,9 @@ export const PageHeader = MuiStyled(AppBar)(() => ({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: '0 40px',
+    padding: '5px 60px',
     ['@media (max-width:720px)']: {
-        padding: '0 10px',
+        padding: '3px 10px',
     }
 }));
 

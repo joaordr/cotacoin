@@ -1,24 +1,16 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useContext, useEffect, useState } from "react";
-import { FaSearch } from "react-icons/fa";
-import { AiOutlineClose } from "react-icons/ai";
+import { FormControl, TextField, InputAdornment, IconButton, CircularProgress } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+import SearchIcon from '@mui/icons-material/Search';
 
 import { CoinsContext } from '../../../../contexts/CoinsContext';
-
-import FetchingLoader from '../../../FetchingLoader';
-
-import styles from './search.module.scss';
 import { useSearch } from "../../../../hooks/useSearch";
-import { useWindowDimensions } from "../../../../hooks/useWindowDimensions";
-import { LanguageContext } from "../../../../contexts/LanguageContext";
 
 let typingTimer;
 
 export default function Search() {
-    const { translations } = useContext(LanguageContext);
-    const { width } = useWindowDimensions();
-
-    const { itemsPerPage, setPages, setFilter, isFetchingCoins, coins } = useContext(CoinsContext);
+    const { itemsPerPage, setPages, setFilter } = useContext(CoinsContext);
     const [searchValue, setSearchValue] = useState('');
     const { data, isFetching } = useSearch(searchValue, itemsPerPage);
 
@@ -56,13 +48,31 @@ export default function Search() {
     }
 
     return (
-        <div className={styles.container}>
-            <div className={styles.content}>
-                <FaSearch />
-                <input id="searchField" type="text" placeholder={translations.common.searchPlaceholder} onKeyUp={e => handleSearch(e.target.value.trim())} />
-                {isFetching ? <FetchingLoader /> : <>{(searchValue.length > 0) && <AiOutlineClose onClick={() => { setSearchValue('') }} />}</>}
-            </div>
-            {(isFetchingCoins && coins.length != 0 && width > 850) && <FetchingLoader />}
-        </div>
+        <FormControl variant="standard" fullWidth>
+            <TextField
+                id="searchField"
+                variant="standard"
+                onKeyUp={e => handleSearch(e.target.value.trim())}
+                InputProps={{
+                    startAdornment: (
+                        <InputAdornment position="start">
+                            <SearchIcon />
+                        </InputAdornment>
+                    ),
+                    endAdornment: (
+                        <InputAdornment position="end">
+                            {isFetching ?
+                                <CircularProgress color="inherit" size={20} />
+                                :
+                                <>{(searchValue.length > 0) &&
+                                    <IconButton aria-label="clear search" size="small" onClick={() => { setSearchValue('') }} >
+                                        <CloseIcon fontSize="small" />
+                                    </IconButton>}
+                                </>}
+                        </InputAdornment>
+                    )
+                }}
+            />
+        </FormControl>
     )
 }

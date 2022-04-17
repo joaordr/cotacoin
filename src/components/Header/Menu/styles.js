@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 import { styled as MuiStyled } from '@mui/material/styles';
-// import { IconButton } from '@mui/material';
 import Menu from '@mui/material/Menu';
-import { IconButton, MenuItem, Button } from '@mui/material';
+import { IconButton, Button } from '@mui/material';
 import Switch from '@mui/material/Switch';
 
 export const SettingsMenu = MuiStyled(Menu)(() => ({
@@ -21,10 +20,10 @@ export const MenuButton = MuiStyled(IconButton)(() => ({
 }));
 
 export const LoginButton = MuiStyled(Button)(() => ({
-    background: 'var(--item-background-tertiary)',
+    background: 'var(--item-background)',
     color: 'var(--font-color)',
     '&:hover': {
-        background: 'var(--item-background-hover-tertiary)',
+        background: 'var(--item-background-hover)',
     }
 }));
 
